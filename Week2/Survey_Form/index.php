@@ -1,10 +1,16 @@
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta charset="utf-8">
         <title>Survey Form</title>
+        <?php
+            session_start();
+            echo session_id();
+         ?>
     </head>
     <body>
+
         <form class="" action="result.php" method="post">
             <p>Your Name: <input type="text" name="name" value=""></p>
             <p>Dojo Location:
