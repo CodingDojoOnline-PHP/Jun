@@ -5,7 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Products</title>
-
+    <style media="screen">
+        #input{
+            width: 30px;
+            margin-left: 20px;
+        }
+    </style>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -32,19 +37,21 @@
               <tr>
                   <td>Dojo Shirt</td>
                   <td>$19.99</td>
-                  <form class="" action="index.html" method="post">
-                      <td><input type="number" name="qty" value=""></td>
+                  <form class="" action="add" method="post">
+                      <td><input id="input" type="number" name="qty" value="" placeholder="0"></td>
                       <td><input type="submit" name="" value="Buy"></td>
-                      <input type="hidden" name="shirt" value="shirt">
+                      <input type="hidden" name="name" value="Dojo Shirt">
+                      <input type="hidden" name="price" value="19.99">
                   </form>
               </tr>
               <tr>
                   <td>Dojo Cup</td>
                   <td>$39.99</td>
-                  <form class="" action="index.html" method="post">
-                      <td><input type="number" name="qty" value=""></td>
+                  <form class="" action="add" method="post">
+                      <td><input id="input" type="number" name="qty" value="" placeholder="0"></td>
                       <td><input type="submit" name="" value="Buy"></td>
-                      <input type="hidden" name="cup" value="cup">
+                      <input type="hidden" name="name" value="Dojo Cup">
+                      <input type="hidden" name="price" value="39.99">
                   </form>
               </tr>
           </tbody>

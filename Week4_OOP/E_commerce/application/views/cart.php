@@ -19,7 +19,48 @@
   </head>
   <body>
       <h3>Check Out</h3>
-      
+      <table class="table table-striped">
+
+          <thead>
+              <tr>
+                  <th>Qty</th>
+                  <th>Description</th>
+                  <th>Price</th>
+              </tr>
+          </thead>
+          <tbody>
+              <?php
+              if (isset($items)) {
+                  foreach ($items as $item){
+                      echo "<tr>
+                                <td>{$item['qty']}</td>
+                                <td>{$item['name']}</td>
+                                <td>{$item['price']}</td>
+                                <td><form class='' action='destroy' method='post'>
+                                    <input type='submit' name='' value='Delete'>
+                                    <input type='hidden' name='item' value='{$item['name']}'>
+                                </form></td>
+                            </tr>";
+                        $prices[] = $item['price'];
+                  }
+                          echo "<tr>
+                          <th></th>
+                          <th>Total</th>
+                          <th>".array_sum($prices)."</th>
+                          </tr>";
+                    }    ?>
+                </tbody>
+            </table>
+      <h4>Billing Info</h4>
+      <form class="" action="index.html" method="post">
+          <p>Name:</p>
+          <input type="text" name="name" value="">
+          <p>Address:</p>
+          <input type="text" name="address" value="">
+          <p>Card #:</p>
+          <input type="text" name="card" value=""><br>
+          <input type="submit" name="" value="Order">
+      </form>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
