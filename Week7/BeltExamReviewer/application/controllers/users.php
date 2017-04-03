@@ -29,7 +29,7 @@ class Users extends CI_Controller {
                 'is_logged_in' => true
             );
             $this->session->set_userdata('logged_in', $logged_in);
-			redirect('/books');
+			redirect('books');
         }
         else
         {

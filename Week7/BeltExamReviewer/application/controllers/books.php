@@ -14,18 +14,7 @@ class Books extends CI_Controller {
             echo 'Please log in first';
         }
         else {
-            $this->load->model('Book');
-            $this->db->select('books.title,
-                               reviews.rating,
-                               reviews.comment,
-                               reviews.created_at,
-                               reviews.book_id,
-                               reviews.user_id,
-                               users.first_name');
-            $this->db->from('reviews');
-            $this->db->join('books', 'reviews.book_id = books.id');
-            $this->db->join('users', 'reviews.user_id = users.id');
-            $query = $this->db->get()->result_array();
+            $query = $this->Book->show_all_books_reviews_users();
             $reviews = array_reverse($query);
             $books = $this->Book->get_all_books();
             $logged_in = $this->session->userdata('logged_in');
@@ -33,7 +22,6 @@ class Books extends CI_Controller {
                                              'reviews' => $reviews,
                                              'books' => $books));
         }
-
 	}
     public function show_book($book_id)
     {
@@ -41,23 +29,7 @@ class Books extends CI_Controller {
             echo 'Please log in first';
         }
         else {
-            // $this->load->model('Review');
-            // $this->load->model('Book');
-            // $this->load->model('User');
-            $this->db->select('books.title,
-                               books.author,
-                               reviews.id,
-                               reviews.rating,
-                               reviews.comment,
-                               reviews.created_at,
-                               reviews.book_id,
-                               reviews.user_id,
-                               users.first_name');
-            $this->db->from('reviews');
-            $this->db->join('books', 'reviews.book_id = books.id');
-            $this->db->join('users', 'reviews.user_id = users.id');
-            $this->db->where('book_id', $book_id);
-            $query = $this->db->get()->result_array();
+            $query = $this->Book->show_book_by_id($book_id);
             $reviews = array_reverse($query);
             $logged_in = $this->session->userdata('logged_in');
             $this->load->view('bookpage', array('logged_in'=>$logged_in,
@@ -70,24 +42,9 @@ class Books extends CI_Controller {
             echo 'Please log in first';
         }
         else {
-            $this->db->select('users.first_name,
-                              users.last_name,
-                              users.email,
-                              reviews.book_id,
-                              books.title');
-            $this->db->from('reviews');
-            $this->db->join('books', 'reviews.book_id = books.id');
-            $this->db->join('users', 'reviews.user_id = users.id');
-            $this->db->where('user_id', $user_id);
-            $user = $this->db->get()->result_array();
+            $user = $this->User->get_user_by_id($user_id);
             $this->load->view('users', array('user'=>$user));
         }
-    }
-    public function destroy_review($book_id, $id)
-    {
-        $this->load->model('Review');
-        $this->Review->remove_review($id);
-        redirect("books/show_book/{$book_id}");
     }
     public function add_book()
     {
@@ -95,8 +52,6 @@ class Books extends CI_Controller {
     }
     public function create_book_review()
     {
-        $this->load->model('Book');
-        $this->load->model('Review');
         if ($this->input->post('title')) {
             $title = $this->input->post('title');
             $author = $this->input->post('author');
@@ -122,9 +77,5 @@ class Books extends CI_Controller {
         );
         $this->Review->add_review($review_info);
         redirect("books/show_book/{$book_id}");
-        // $this->db->select('*');
-        // $this->db->from('users');
-        // $this->db->join('reviews', 'reviews.user_id = users.id');
-        // $this->db->join('books', 'reviews.book_id = books.id');
     }
 }

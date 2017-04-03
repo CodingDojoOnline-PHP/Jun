@@ -53,7 +53,7 @@
           <div class="jumbotron">
               <h1>Welcome to the User Dashboard</h1>
               <p></p>
-              <p><a class="btn btn-primary btn-lg" href="#" role="button">Start</a></p>
+              <p><a class="btn btn-primary btn-lg" href="signin" role="button">Start</a></p>
           </div>
           <div class="container-fluid">
               <div class="row">

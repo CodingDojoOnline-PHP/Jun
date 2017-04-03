@@ -33,11 +33,12 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
+                <li><h3>Book Review App!</h3></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="/books">Home</a></li>
-              <li><a href="books/add">Add Book and Review</a></li>
+              <li><a href="/books/add">Add Book and Review</a></li>
               <li><a href="/">Logout</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -52,8 +53,13 @@
     <div class="container-fluid">
         <h3>Posted Reviews on the folllowing books</h3>
         <?php if (isset($user)) {
+            $arr = array();
             foreach ($user as $use) {
-                echo "<a href='/books/{$use['book_id']}'>{$use['title']}</a><br />";
+                $arr[]="<a href='/books/{$use['book_id']}'>{$use['title']}</a><br />";
+            }
+            $unique_title = array_unique($arr);
+            foreach ($unique_title as $book) {
+                echo $book;
             }
         } ?>
     </div>

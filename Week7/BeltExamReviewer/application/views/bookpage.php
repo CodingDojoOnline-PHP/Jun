@@ -38,6 +38,7 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
+                <li><h3>Book Review App!</h3></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -56,7 +57,7 @@
         <?php if (isset($reviews)) {
             foreach ($reviews as $review) {
                 echo "<hr /><p>Rating: {$review['rating']}</p>
-                <p><a href='/users/{$review['user_id']}'>{$review['first_name']}</a> says: {$review['comment']}</p>
+                <p><a href='/user/{$review['user_id']}'>{$review['first_name']}</a> says: {$review['comment']}</p>
                 <p>Posted on {$review['created_at']}</p>";
                 if ($review['user_id']==$logged_in['user_id']) {
                     echo "<a href='/review/delete/{$review['book_id']}/{$review['id']}'>Delete this Review</a>";

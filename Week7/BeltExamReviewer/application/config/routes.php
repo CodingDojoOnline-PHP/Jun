@@ -57,5 +57,5 @@ $route['books'] = 'books';
 $route['books/add'] = 'books/add_book';
 $route['books/create'] = 'books/create_book_review';
 $route['books/(:any)'] = 'books/show_book/$1';
-$route['review/delete/(:any)/(:any)'] = 'books/destroy_review/$1/$2';
-$route['users/(:any)'] = 'books/show_user/$1';
+$route['review/delete/(:any)/(:any)'] = 'reviews/destroy_review/$1/$2';
+$route['user/(:any)'] = 'books/show_user/$1';

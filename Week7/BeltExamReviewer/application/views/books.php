@@ -36,14 +36,13 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <h1>Welcome, <?php echo $logged_in['user_first'] ?></h1>
 
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
-
+                <li><h3>Book Review App!</h3></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="books/add">Add Book and Review</a></li>
@@ -54,14 +53,14 @@
       </nav>
 
 <!-- /. end of navbar -->
-
+<h1>Welcome, <?php echo $logged_in['user_first'] ?></h1>
       <div class="box">
           <h3>Recent Book Review</h3>
           <?php if (isset($reviews)) {
               foreach (array_slice($reviews, 0, 3) as $review) {
                   echo "<h3><a href='books/{$review['book_id']}'>{$review['title']}</a></h3>
                   <p>Rating: {$review['rating']}</p>
-                  <p><a href='/users/{$review['user_id']}'>{$review['first_name']}</a>: {$review['comment']}</p>
+                  <p><a href='/user/{$review['user_id']}'>{$review['first_name']}</a>: {$review['comment']}</p>
                   <p>posted on: {$review['created_at']}</p>";
               }
           } ?>
