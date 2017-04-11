@@ -13,11 +13,12 @@
             margin: 10px;
             padding-left: 133px;
         }
-        .title {
-            margin: 30px 0px;;
-        }
         .right {
-            margin-left: 474px;
+            float: right;
+        }
+        .box {
+            display: inline-block;
+            width: auto;
         }
     </style>
     <!-- Bootstrap -->
@@ -47,7 +48,7 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Dashboard</a></li>
+              <li class="active"><a href="dashboard">Dashboard</a></li>
               <li><a href="#">Profile</a></li>
 
             </ul>
@@ -59,13 +60,14 @@
         </div><!-- /.container-fluid -->
       </nav>
           <div class='container'>
-              <h3 class="title">Add a new user</h3>
-              <a class="right btn btn-primary" href="#">Return to Dashboard</a>
+              <div class="">
+                  <h3 class="title">Add a new user<a class="btn btn-primary right " href="dashboard">Return to Dashboard</a></h3>
+              </div>
               <?php echo $this->session->flashdata('registration'); ?>
 
               <?php echo validation_errors(); ?>
 
-              <?php echo form_open('/main/validate'); ?>
+              <?php echo form_open('/main/validateII'); ?>
 
                 <h5>First Name:</h5>
                 <input type="text" name="first_name" value="" size="27" />

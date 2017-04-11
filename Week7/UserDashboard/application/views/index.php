@@ -59,7 +59,7 @@
               <div class="row">
                   <div class="col-xs-6 col-md-4">
                       <h3>Manage Users</h3>
-                      <p>Using this application, you will learn how to add, remove, and edit users for the application.</p>
+                      <p>Using this application, you will be able to add, remove, and edit users for the application.</p>
                   </div>
                   <div class="col-xs-6 col-md-4">
                       <h3>Leave messages</h3>

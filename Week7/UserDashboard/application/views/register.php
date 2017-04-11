@@ -50,7 +50,7 @@
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#">Sign in</a></li>
+                  <li><a href="/signin">Sign in</a></li>
 
                 </ul>
               </div><!-- /.navbar-collapse -->

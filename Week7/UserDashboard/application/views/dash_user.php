@@ -55,7 +55,7 @@
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">Log off</a></li>
+              <li><a href="/signin">Log off</a></li>
 
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -63,7 +63,7 @@
       </nav>
       <div class="container">
           <h3>All Users</h3>
-          <a class="right btn btn-primary" href="new_user">Add new</a>
+          <a class="right btn btn-primary navbar-right" href="new_user">Add new</a>
           <table class="table table-bordered table-striped">
               <thead>
                   <tr>
@@ -75,13 +75,17 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                  </tr>
+                 <?php if (isset($users)) {
+                     foreach ($users as $user) {
+                         echo "<tr>
+                             <td>{$user['id']}</td>
+                             <td>{$user['first_name']} {$user['last_name']}</td>
+                             <td>{$user['email']}</td>
+                             <td>{$user['created_at']}</td>
+                             <td>{$user['user_level']}</td>
+                         </tr>";
+                     }
+                 }?>
               </tbody>
           </table>
 

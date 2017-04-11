@@ -52,11 +52,11 @@
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Dashboard</a></li>
-              <li><a href="#">Profile</a></li>
+              <li><a href="/users/edit">Profile</a></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">Log off</a></li>
+              <li><a href="/signin">Log off</a></li>
 
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -79,14 +79,25 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                  </tr>
+                  <?php if (isset($users)) {
+                    foreach ($users as $user) {
+                        echo "<tr>
+                            <td>{$user['id']}</td>
+                            <td>{$user['first_name']} {$user['last_name']}</td>
+                            <td>{$user['email']}</td>
+                            <td>{$user['created_at']}</td>
+                            <td>{$user['user_level']}</td>
+                            <td>";
+                        if ($user['id'] !== $logged_in['user_id']) {
+                                echo "<a href='/users/edit/{$user['id']}'>edit</a> | <a href='/users/remove/{$user['id']}'>remove</a>";
+                            }
+                        else {
+                            echo "<a href='/users/edit'>edit</a>";
+                        };
+                        echo "</td>
+                        </tr>";
+                    }
+                  } ?>
               </tbody>
           </table>
 

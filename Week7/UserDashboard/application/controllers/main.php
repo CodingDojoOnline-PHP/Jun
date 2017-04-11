@@ -14,6 +14,7 @@ class Main extends CI_Controller {
 	}
     public function signin_page()
     {
+		session_destroy();
         $this->load->helper(array('form', 'url'));
         $this->load->view('signin');
     }
@@ -28,16 +29,18 @@ class Main extends CI_Controller {
             $logged_in = array(
                 'user_id' => $user['id'],
                 'user_email' => $user['email'],
-                'user_name' => $user['first_name'].' '.$user['last_name'],
-                'is_logged_in' => true
+                'user_first' => $user['first_name'],
+				 'user_last' => $user['last_name'],
+				'user_level' => $user['user_level'],
+				'is_logged_in' => true
             );
-            $this->session->set_userdata($logged_in);
-            $this->load->view('success');
+            $this->session->set_userdata(array('logged_in' => $logged_in));
+			redirect('/users/dashboard');
         }
         else
         {
             $this->session->set_flashdata("login", "Invalid email or password");
-            redirect(base_url());
+            redirect('/signin');
         }
     }
     public function reg_page()
@@ -45,14 +48,18 @@ class Main extends CI_Controller {
         $this->load->helper(array('form', 'url'));
         $this->load->view('register');
     }
+	public function validations()
+	{
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
+		$this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]', array('is_unique' => '%s is already being used.'));
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[8]', array('required' => 'You must provide a %s.'));
+		$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]');
+	}
     public function validate()
     {
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
-        $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]', array('is_unique' => '%s is already being used.'));
-        $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]', array('required' => 'You must provide a %s.'));
-        $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]');
+        $this->validations();
         if ($this->form_validation->run() == FALSE)
         {
             $this->load->view('register');
@@ -63,6 +70,20 @@ class Main extends CI_Controller {
             $this->load->view('register');
         }
     }
+	public function validateII()
+	{
+		$this->validations();
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->load->view('new_user');
+		}
+		else
+		{
+			$this->register();
+			redirect('/dashboard');
+		}
+	}
+
     public function register()
     {
         $this->load->model('User');
@@ -71,24 +92,23 @@ class Main extends CI_Controller {
         $email = $this->input->post('email');
         $salt = bin2hex(openssl_random_pseudo_bytes(22));
         $password = md5($this->input->post('password').''.$salt);
+		$query = $this->User->get_all_users();
+		if (count($query)==0) {
+			$user_level = 'admin';
+		}
+		else {
+			$user_level = 'normal';
+		}
         $user_info = array(
             "first_name" => $first_name,
             "last_name" => $last_name,
             "email" => $email,
             "password" => $password,
-            "salt" => $salt
+            "salt" => $salt,
+			"user_level" => $user_level
         );
         $this->User->add_user($user_info);
         $this->session->set_flashdata('registration', 'Registration successful!');
     }
-    public function dashboard()
-    {
-        //$this->load->view('dash_user');
-         $this->load->view('dash_admin');
-    }
-    public function new_user()
-    {
-        $this->load->helper(array('form', 'url'));
-        $this->load->view('new_user');
-    }
+
 }

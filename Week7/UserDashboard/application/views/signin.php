@@ -59,7 +59,7 @@
           <h3 class="title">Login</h3>
           <?php echo $this->session->flashdata('login'); ?>
 
-          <?php echo form_open('/users/login'); ?>
+          <?php echo form_open('/main/login'); ?>
 
             <h5>Email Address:</h5>
             <input type="text" name="login_email" value="" size="27">
