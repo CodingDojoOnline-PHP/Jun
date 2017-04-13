@@ -32,6 +32,7 @@ class Main extends CI_Controller {
                 'user_first' => $user['first_name'],
 				 'user_last' => $user['last_name'],
 				'user_level' => $user['user_level'],
+				'description'=> $user['description'],
 				'is_logged_in' => true
             );
             $this->session->set_userdata(array('logged_in' => $logged_in));

@@ -60,16 +60,15 @@
               <h4>Edit Information</h4>
               <form class="" action="/edit_user_info/<?= $user['id'] ?>" method="post">
                   <p>Email Address:</p>
-                  <input type="text" name="email" value="" placeholder="<?= $user['email'] ?>">
+                  <input type="text" name="email" value="<?= $user['email'] ?>" placeholder="">
                   <p>First Name:</p>
-                  <input type="text" name="first_name" value="" placeholder="<?= $user['first_name'] ?>">
+                  <input type="text" name="first_name" value="<?= $user['first_name'] ?>" placeholder="">
                   <p>Last Name:</p>
-                  <input type="text" name="last_name" value="" placeholder="<?= $user['last_name'] ?>">
+                  <input type="text" name="last_name" value="<?= $user['last_name'] ?>" placeholder="">
                   <p>User Level:</p>
                   <select class="" name="user_level">
-                      <option value=""></option>
-                      <option value="admin">Admin</option>
                       <option value="normal">Normal</option>
+                      <option value="admin">Admin</option>
                   </select>
                   <input class="btn-success" type="submit" name="" value="Save">
               </form>

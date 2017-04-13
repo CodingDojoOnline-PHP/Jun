@@ -82,7 +82,7 @@
                 <div class="button"><input class="btn-success" type="submit" name="register" value="Register" /></div>
 
                 </form>
-                <a href="signin">Already have an account? Login.</a>
+                <a href="/signin">Already have an account? Login.</a>
           </div>
       </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

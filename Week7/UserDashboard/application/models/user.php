@@ -20,9 +20,14 @@ class User extends CI_Model {
     }
     function edit_user_info($user)
     {
-        $date = date("Y-m-d, H:i:s");
         $query = "UPDATE users SET first_name = ?, last_name = ?, email = ?, user_level = ?, updated_at = ? WHERE id = ?";
         $set = array($user['first_name'], $user['last_name'], $user['email'], $user['user_level'], date("Y-m-d, H:i:s"), $user['id']);
+        return $this->db->query($query, $set);
+    }
+    function edit_user_desc($user)
+    {
+        $query = "UPDATE users SET description = ?, updated_at = ? WHERE id = ?";
+        $set = array($user['description'], date("Y-m-d, H:i:s"), $user['user_id']);
         return $this->db->query($query, $set);
     }
     function edit_password($user)

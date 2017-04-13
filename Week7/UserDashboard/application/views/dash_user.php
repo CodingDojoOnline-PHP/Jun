@@ -44,14 +44,14 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">User Dashboard</a>
+            <a class="navbar-brand" href="/dashboard">User Dashboard</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Dashboard</a></li>
-              <li><a href="#">Profile</a></li>
+              <li class="active"><a href="/dashboard">Dashboard</a></li>
+              <li><a href="/users/edit">Profile</a></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -63,7 +63,6 @@
       </nav>
       <div class="container">
           <h3>All Users</h3>
-          <a class="right btn btn-primary navbar-right" href="new_user">Add new</a>
           <table class="table table-bordered table-striped">
               <thead>
                   <tr>
@@ -79,7 +78,7 @@
                      foreach ($users as $user) {
                          echo "<tr>
                              <td>{$user['id']}</td>
-                             <td>{$user['first_name']} {$user['last_name']}</td>
+                             <td><a href='/show/{$user['id']}'>{$user['first_name']} {$user['last_name']}</a></td>
                              <td>{$user['email']}</td>
                              <td>{$user['created_at']}</td>
                              <td>{$user['user_level']}</td>

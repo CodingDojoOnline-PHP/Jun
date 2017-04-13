@@ -10,37 +10,66 @@ class Users extends CI_Controller {
 	}
     public function dashboard()
     {
-        $query = $this->User->get_all_users();
-		$logged_in = $this->session->userdata('logged_in');
-        if ($logged_in['user_level']=='admin')
-        {
-            $this->load->view('dash_admin', array('users' => $query,
-											  'logged_in' => $logged_in));
-        }
-        else
-        {
-            $this->load->view('dash_user', array('users' => $query));
-        }
+		if (!isset($this->session->userdata['logged_in'])) {
+			echo "Please login first";
+		}
+		else {
+			$query = $this->User->get_all_users();
+			$logged_in = $this->session->userdata('logged_in');
+	        if ($logged_in['user_level']=='admin')
+	        {
+	            $this->load->view('dash_admin', array('users' => $query,
+												  'logged_in' => $logged_in));
+	        }
+	        else
+	        {
+	            $this->load->view('dash_user', array('users' => $query));
+	        }
+		}
     }
     public function new_user()
     {
-        $this->load->helper(array('form', 'url'));
-        $this->load->view('new_user');
+		if (!isset($this->session->userdata['logged_in'])) {
+			echo "Please login first";
+		}
+		else {
+			$this->load->helper(array('form', 'url'));
+	        $this->load->view('new_user');
+		}
     }
     public function edit_user($id)
     {
-        $query = $this->User->get_user_by_id($id);
-		$logged_in = $this->session->userdata('logged_in');
-        if ($logged_in['user_level']=='admin')
-        {
-            $this->load->view('edit_admin', array('user' => $query,
-											 'logged_in' => $logged_in));
-        }
+		if (!isset($this->session->userdata['logged_in'])) {
+			echo "Please login first";
+		}
+		else {
+			$query = $this->User->get_user_by_id($id);
+			$logged_in = $this->session->userdata('logged_in');
+			if ($logged_in['user_level']=='admin')
+			{
+				$this->load->view('edit_admin', array('user' => $query,
+												 'logged_in' => $logged_in));
+			}
+		}
     }
 	public function edit_profile()
 	{
-		$logged_in = $this->session->userdata('logged_in');
-		$this->load->view('edit_user', array('users' => $logged_in));
+		if (!isset($this->session->userdata['logged_in'])) {
+			echo "Please login first";
+		}
+		else {
+			$logged_in = $this->session->userdata('logged_in');
+			$this->load->view('edit_user', array('users' => $logged_in));
+		}
+
+	}
+	public function edit_desc($user_id)
+	{
+		$description = $this->input->post('description');
+		$user = array('description' => $description,
+	 				  'user_id' => $user_id);
+		$this->User->edit_user_desc($user);
+		redirect("/users/edit");
 	}
     public function remove_conf($id)
     {

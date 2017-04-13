@@ -59,11 +59,11 @@
               <h4>Edit Information</h4>
               <form class="" action="/edit_user_info/<?=$users['user_id']?>" method="post">
                   <p>Email Address:</p>
-                  <input type="text" name="email" value="" placeholder="<?=$users['user_email']?>">
+                  <input type="text" name="email" value="<?=$users['user_email']?>" placeholder="">
                   <p>First Name:</p>
-                  <input type="text" name="first_name" value="" placeholder="<?=$users['user_first']?>">
+                  <input type="text" name="first_name" value="<?=$users['user_first']?>" placeholder="">
                   <p>Last Name:</p>
-                  <input type="text" name="last_name" value="" placeholder="<?=$users['user_last']?>">
+                  <input type="text" name="last_name" value="<?=$users['user_last']?>" placeholder="">
                   <input class="btn-success" type="submit" name="" value="Save">
               </form>
           </div>
@@ -89,8 +89,8 @@
           </div>
           <div class="box">
               <h4>Edit description</h4>
-              <form class="" action="index.html" method="post">
-                  <textarea name="description" rows="8" cols="80"></textarea>
+              <form class="" action="/users/edit_desc/<?=$users['user_id']?>" method="post">
+                  <textarea name="description" rows="8" cols="80" placeholder="<?=$users['description']?>"></textarea>
                   <input class="btn-success" type="submit" name="" value="Save">
               </form>
           </div>
