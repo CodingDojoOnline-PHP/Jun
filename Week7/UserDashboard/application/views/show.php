@@ -5,12 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
+    <link rel = "stylesheet" type = "text/css"
+    href = "<?php echo base_url(); ?>css/Portfolio.css">
     <style media="screen">
-        .container{
+        .container {
             margin: 70px;
+            background-color: rgba(0,0,0, 0.60);
+            padding: 77px;
+            border-radius: 10px;
+            border: white 3px dashed;
+        }
+        .title {
+            color: white;
         }
         .comment{
-            border: black solid 1px;
+            border: white dashed 1px;
             width: 442px;
             height: 70px;
             margin: 0px 0px 20px 0px;
@@ -21,12 +30,13 @@
             margin-left: 145px;
         }
         .message{
-            border: black solid 1px;
+            border: white dashed 1px;
             width: 582px;
             height: 100px;
+            display: inline-block;
         }
         p{
-            display: inline-block;
+            /*display: inline-block;*/
         }
     </style>
     <!-- Bootstrap -->
@@ -68,29 +78,29 @@
         </div><!-- /.container-fluid -->
       </nav>
       <div class="container">
-          <h2><?=$user['first_name'];?> <?=$user['last_name'];?></h2>
+          <h2 class="title"><?=$user['first_name'];?> <?=$user['last_name'];?></h2>
           <table class="table">
             <tbody>
                 <tr>
-                    <td>Registered at:</td>
-                    <td><?php $date=date_create($user['created_at']); echo date_format($date, 'F jS Y');?></td>
+                    <td class="title">Registered at:</td>
+                    <td class="title"><?php $date=date_create($user['created_at']); echo date_format($date, 'F jS Y');?></td>
                 </tr>
                 <tr>
-                    <td>User ID:</td>
-                    <td>#<?=$user['id']?></td>
+                    <td class="title">User ID:</td>
+                    <td class="title">#<?=$user['id']?></td>
                 </tr>
                 <tr>
-                    <td>Email address:</td>
-                    <td><?=$user['email']?></td>
+                    <td class="title">Email address:</td>
+                    <td class="title"><?=$user['email']?></td>
                 </tr>
                 <tr>
-                    <td>Description:</td>
-                    <td><?=$user['description']?></td>
+                    <td class="title">Description:</td>
+                    <td class="title"><?=$user['description']?></td>
                 </tr>
             </tbody>
           </table>
 
-          <h3>Leave a message for <?=$user['first_name']?></h3>
+          <h3 class="title">Leave a message for <?=$user['first_name']?></h3>
           <form class="" action="/message/add/<?=$user['id']?>/<?=$logged_in['user_id']?>" method="post">
               <textarea name="message" rows="6" cols="80"></textarea>
               <input class="btn-success" type="submit" name="" value="Post">
@@ -99,20 +109,20 @@
               foreach ($messages as $message)
               {
                   echo "<div class='message_box'>
-                      <p>{$message['first_name']} {$message['last_name']}</p>
+                      <em class='title'>{$message['first_name']} {$message['last_name']}</em>
                       "?>
-                      <p><?= date_format(date_create($message['created_at']), 'F jS Y')?></p>
+                      <p class="title"><?= date_format(date_create($message['created_at']), 'F jS Y')?></p>
 
-                      <?php echo "<div class='message'>{$message['message']}</div>"?>
+                      <?php echo "<div class='title message'>{$message['message']}</div><a class='btn-danger' href='/messages/destroy_message/{$message['id']}"?>/<?=$user['id']?> <?php echo "'>Delete</a>" ?>
                       <?php $comments = $this->Message->comments_by_message_id($message['id']) ?>
                       <div class='comment_box'>
                       <?php if (isset($comments)) {
                           foreach ($comments as $comment) {
-                              echo "<p>{$comment['first_name']} {$comment['last_name']}</p>
+                              echo "<em class='title'>{$comment['first_name']} {$comment['last_name']}</em>
                                   "?>
-                                  <p><?= date_format(date_create($comment['created_at']), 'F jS Y')?></p>
+                                  <p class="title"><?= date_format(date_create($comment['created_at']), 'F jS Y')?></p>
 
-                                  <?php echo "<div class='comment'>{$comment['comment']}</div>";
+                                  <?php echo "<div class='title comment'>{$comment['comment']}</div>";
                                  }
                       }?>
                       <?php echo "<form class='' action='/comment/add/"?><?=$user['id']?>/<?=$message['id']?>/<?=$logged_in['user_id']?>'

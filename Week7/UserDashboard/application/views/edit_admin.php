@@ -5,9 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Edit Profile</title>
+    <link rel = "stylesheet" type = "text/css"
+    href = "<?php echo base_url(); ?>css/Portfolio.css">
     <style media="screen">
         .container {
             margin: 70px;
+            background-color: rgba(0,0,0, 0.60);
+            padding: 77px;
+            border-radius: 10px;
+            border: white 3px dashed;
+        }
+        .title {
+            color: white;
         }
         .box {
             margin:20px;
@@ -47,7 +56,7 @@
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="/signin">Log off</a></li>
+              <li><a href="/">Log off</a></li>
 
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -55,17 +64,17 @@
       </nav>
 
       <div class="container">
-          <h3>Edit user # <?= $user['id'] ?></h3>
+          <h3 class="title">Edit user # <?= $user['id'] ?></h3>
           <div class="box">
-              <h4>Edit Information</h4>
+              <h4 class="title">Edit Information</h4>
               <form class="" action="/edit_user_info/<?= $user['id'] ?>" method="post">
-                  <p>Email Address:</p>
+                  <p class="title">Email Address:</p>
                   <input type="text" name="email" value="<?= $user['email'] ?>" placeholder="">
-                  <p>First Name:</p>
+                  <p class="title">First Name:</p>
                   <input type="text" name="first_name" value="<?= $user['first_name'] ?>" placeholder="">
-                  <p>Last Name:</p>
+                  <p class="title">Last Name:</p>
                   <input type="text" name="last_name" value="<?= $user['last_name'] ?>" placeholder="">
-                  <p>User Level:</p>
+                  <p class="title">User Level:</p>
                   <select class="" name="user_level">
                       <option value="normal">Normal</option>
                       <option value="admin">Admin</option>
@@ -74,7 +83,7 @@
               </form>
           </div>
           <div class="box">
-              <h4>Change Password</h4>
+              <h4 class="title">Change Password</h4>
               <p style="color: red;">
                   <?php echo $this->session->flashdata('password'); ?>
 
@@ -84,11 +93,11 @@
 
               </p>
               <form class="" action="/users/edit_pass/<?=$user['id']?>" method="post">
-                  <p>Old Password:</p>
+                  <p class="title">Old Password:</p>
                   <input type="password" name="old_pass" value="">
-                  <p>New Password:</p>
+                  <p class="title">New Password:</p>
                   <input type="password" name="new_pass" value="">
-                  <p>Password Confirmation:</p>
+                  <p class="title">Password Confirmation:</p>
                   <input type="password" name="conf_pass" value="">
                   <input class="btn-success" type="submit" name="" value="Update Password">
               </form>

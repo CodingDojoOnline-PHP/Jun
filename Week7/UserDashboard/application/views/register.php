@@ -5,16 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
+    <link rel = "stylesheet" type = "text/css"
+    href = "<?php echo base_url(); ?>css/Portfolio.css">
     <style media="screen">
         .container {
             margin: 70px;
+            background-color: rgba(0,0,0, 0.60);
+            padding: 77px;
+            border-radius: 10px;
+            border: white 3px dashed;
+        }
+        .title {
+            color: white;
         }
         .button {
             margin: 10px;
             padding-left: 133px;
         }
-        .title {
+        .t {
             margin: 30px 0px;;
+        }
+        .red {
+            color: red;
         }
     </style>
     <!-- Bootstrap -->
@@ -57,26 +69,27 @@
             </div><!-- /.container-fluid -->
           </nav>
           <div class='container'>
-              <h3 class="title">Register</h3>
-              <?php echo $this->session->flashdata('registration'); ?>
+              <h3 class="title t">Register</h3>
+              <div class="red">
+                  <?php echo $this->session->flashdata('registration'); ?>
 
-              <?php echo validation_errors(); ?>
+                  <?php echo validation_errors(); ?>
 
-              <?php echo form_open('/main/validate'); ?>
-
-                <h5>First Name:</h5>
+                  <?php echo form_open('/main/validate'); ?>
+              </div>
+                <h5 class="title">First Name:</h5>
                 <input type="text" name="first_name" value="" size="27" />
 
-                <h5>Last Name:</h5>
+                <h5 class="title">Last Name:</h5>
                 <input type="text" name="last_name" value="" size="27" />
 
-                <h5>Email Address</h5>
+                <h5 class="title">Email Address</h5>
                 <input type="text" name="email" value="" size="27" />
 
-                <h5>Password</h5>
+                <h5 class="title">Password</h5>
                 <input type="password" name="password" value="" size="27" />
 
-                <h5>Confirm Password</h5>
+                <h5 class="title">Confirm Password</h5>
                 <input type="password" name="passconf" value="" size="27" />
 
                 <div class="button"><input class="btn-success" type="submit" name="register" value="Register" /></div>

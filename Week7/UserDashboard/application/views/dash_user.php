@@ -5,9 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
+    <link rel = "stylesheet" type = "text/css"
+   href = "<?php echo base_url(); ?>css/Portfolio.css">
     <style media="screen">
     .container {
         margin: 70px;
+        background-color: rgba(0,0,0, 0.60);
+        color: white;
+        padding: 77px;
+        border-radius: 10px;
+        border: white 3px dashed;
+    }
+    .table {
+        background-color: white;
+        color: black;
     }
     .button {
         margin: 10px;
@@ -55,7 +66,7 @@
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="/signin">Log off</a></li>
+              <li><a href="/">Log off</a></li>
 
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -67,7 +78,7 @@
               <thead>
                   <tr>
                       <th>ID</th>
-                      <th>Name</th>
+                      <th>Name (Message Board)</th>
                       <th>Email</th>
                       <th>created_at</th>
                       <th>user_level</th>

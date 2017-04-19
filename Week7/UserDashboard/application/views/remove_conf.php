@@ -5,7 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>remove screen</title>
-
+    <link rel = "stylesheet" type = "text/css"
+    href = "<?php echo base_url(); ?>css/Portfolio.css">
+    <style media="screen">
+    .container {
+        margin: 70px;
+        background-color: rgba(0,0,0, 0.60);
+        color: white;
+        padding: 77px;
+        border-radius: 10px;
+        border: white 3px dashed;
+    }
+    </style>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -18,10 +29,12 @@
     <![endif]-->
   </head>
   <body>
-      <h3>Are you sure you want to remove that user?</h3>
-      <p>***Careful not to remove yourself if you are the only Admin in the database!***</p>
-      <a class="btn btn-danger" href="/destroy/<?= $id ?>">Yes</a>
-      <a class="btn btn-default" href="/dashboard">No</a>
+      <div class="container">
+          <h3>Are you sure you want to remove that user?</h3>
+          <a class="btn btn-danger" href="/destroy/<?= $id ?>">Yes</a>
+          <a class="btn btn-default" href="/dashboard">No</a>
+      </div>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

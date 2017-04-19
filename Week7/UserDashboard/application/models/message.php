@@ -24,4 +24,13 @@ class Message extends CI_Model {
         JOIN comments ON messages.id=comments.message_id
         JOIN users AS poster ON comments.c_poster_id=poster.id WHERE comments.message_id=?", array($message_id))->result_array();
     }
+    function remove_message($id)
+    {
+        $query0 = "DELETE FROM comments WHERE message_id = ?";
+        $where0 = array($id);
+        $this->db->query($query0, $where0);
+        $query = "DELETE FROM messages WHERE id = ?";
+        $where = array($id);
+        return $this->db->query($query, $where);
+    }
 }

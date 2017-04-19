@@ -5,18 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
+    <link rel = "stylesheet" type = "text/css"
+   href = "<?php echo base_url(); ?>css/Portfolio.css">
         <style media="screen">
             .container {
+                padding: 30px;
                 margin: 70px;
+                background-color: white;
+                border-radius: 10px;
+                background-color: rgba(0,0,0, 0.60);
+                border: white 3px dashed;
             }
             .button {
                 margin: 10px;
                 padding-left: 133px;
             }
             .title {
-                margin: 30px 0px;;
+
+                color: white;
+                margin: 10px 0px;;
+            }
+            .red {
+                color: red;
             }
         </style>
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -57,14 +70,17 @@
       </nav>
       <div class="container">
           <h3 class="title">Login</h3>
-          <?php echo $this->session->flashdata('login'); ?>
+          <div class="red">
+              <?php echo $this->session->flashdata('login'); ?>
 
-          <?php echo form_open('/main/login'); ?>
+              <?php echo form_open('/main/login'); ?>
+          </div>
 
-            <h5>Email Address:</h5>
+
+            <h5 class="title">Email Address:</h5>
             <input type="text" name="login_email" value="" size="27">
 
-            <h5>Password</h5>
+            <h5 class="title">Password</h5>
             <input type="password" name="login_pass" value="" size="27">
 
             <div class="button"><input class="btn-success" type="submit" name="login" value="Sign In"></div>

@@ -5,9 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
+    <link rel = "stylesheet" type = "text/css"
+    href = "<?php echo base_url(); ?>css/Portfolio.css">
     <style media="screen">
         .container {
             margin: 70px;
+            background-color: rgba(0,0,0, 0.60);
+            padding: 77px;
+            border-radius: 10px;
+            border: white 3px dashed;
+        }
+        .title {
+            color: white;
         }
         .button {
             margin: 10px;
@@ -19,6 +28,9 @@
         .box {
             display: inline-block;
             width: auto;
+        }
+        .red {
+            color: red;
         }
     </style>
     <!-- Bootstrap -->
@@ -49,11 +61,11 @@
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
               <li class="active"><a href="dashboard">Dashboard</a></li>
-              <li><a href="#">Profile</a></li>
+              <li><a href="/users/edit">Profile</a></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">Log off</a></li>
+              <li><a href="/">Log off</a></li>
 
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -63,25 +75,27 @@
               <div class="">
                   <h3 class="title">Add a new user<a class="btn btn-primary right " href="dashboard">Return to Dashboard</a></h3>
               </div>
-              <?php echo $this->session->flashdata('registration'); ?>
+              <div class="red">
+                  <?php echo $this->session->flashdata('registration'); ?>
 
-              <?php echo validation_errors(); ?>
+                  <?php echo validation_errors(); ?>
 
-              <?php echo form_open('/main/validateII'); ?>
+                  <?php echo form_open('/main/validateII'); ?>
+              </div>
 
-                <h5>First Name:</h5>
+                <h5 class="title">First Name:</h5>
                 <input type="text" name="first_name" value="" size="27" />
 
-                <h5>Last Name:</h5>
+                <h5 class="title">Last Name:</h5>
                 <input type="text" name="last_name" value="" size="27" />
 
-                <h5>Email Address</h5>
+                <h5 class="title">Email Address</h5>
                 <input type="text" name="email" value="" size="27" />
 
-                <h5>Password</h5>
+                <h5 class="title">Password</h5>
                 <input type="password" name="password" value="" size="27" />
 
-                <h5>Confirm Password</h5>
+                <h5 class="title">Confirm Password</h5>
                 <input type="password" name="passconf" value="" size="27" />
 
                 <div class="button"><input class="btn-success" type="submit" name="register" value="Create" /></div>

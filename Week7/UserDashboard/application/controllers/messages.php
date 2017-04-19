@@ -6,7 +6,7 @@ class Messages extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->output->enable_profiler();
+		// $this->output->enable_profiler();
 	}
     public function show($user_id)
     {
@@ -41,4 +41,9 @@ class Messages extends CI_Controller {
         $this->Message->add_comment($post);
         redirect("/show/{$user_id}");
     }
+	public function destroy_message($id, $user_id)
+	{
+		$this->Message->remove_message($id);
+		redirect("/show/{$user_id}");
+	}
 }
